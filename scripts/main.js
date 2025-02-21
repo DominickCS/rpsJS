@@ -46,6 +46,19 @@ function gameRound(playerChoice) {
 for (let i = 0; i < playerChoice.length; i++) {
   playerChoice[i].addEventListener("click", function () {
     if (gameOver === false) {
+      if (playerChoice[i].classList[0] === "rock") {
+        document.querySelector(".rockGif").style.display = "block";
+        document.querySelector(".paperGif").style.display = "none";
+        document.querySelector(".scissorsGif").style.display = "none";
+      } else if (playerChoice[i].classList[0] === "paper") {
+        document.querySelector(".rockGif").style.display = "none";
+        document.querySelector(".paperGif").style.display = "block";
+        document.querySelector(".scissorsGif").style.display = "none";
+      } else if (playerChoice[i].classList[0] === "scissors") {
+        document.querySelector(".rockGif").style.display = "none";
+        document.querySelector(".paperGif").style.display = "none";
+        document.querySelector(".scissorsGif").style.display = "block";
+      }
       gameRound(Number(playerChoice[i].value));
     } else if (gameOver === true) {
       console.log("Game is over...");
