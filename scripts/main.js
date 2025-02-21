@@ -7,29 +7,35 @@
 const rockBtn = document.querySelector(".rock");
 const paperBtn = document.querySelector(".paper");
 const scissorsBtn = document.querySelector(".scissors");
-const playerPlay = document.querySelectorAll(".choice");
+const playerChoice = document.querySelectorAll(".choice");
+let playerScore = Number(document.querySelector(".playerScore").textContent);
+let botScore = Number(document.querySelector(".botScore").textContent);
 
 rockBtn.value = 0;
 paperBtn.value = 1;
 scissorsBtn.value = 2;
 
-function gameRound(playerPlay) {
-  let botPlay = Math.trunc(Math.random() * 3);
-  console.log(`Player chose: ${playerPlay}, Bot Chose: ${botPlay}`);
-  if ((playerPlay - botPlay + 3) % 3 === 1) {
+function gameRound(playerChoice) {
+  let botChoice = Math.trunc(Math.random() * 3);
+  console.log(`Player chose: ${playerChoice}, Bot Chose: ${botChoice}`);
+  if ((playerChoice - botChoice + 3) % 3 === 1) {
     console.log(`Player Wins`);
+    document.querySelector(".playerScore").textContent = playerScore += 1;
     document.querySelector("body").style.backgroundColor = "Green";
-  } else if ((playerPlay - botPlay + 3) % 3 === 2) {
+  } else if ((playerChoice - botChoice + 3) % 3 === 2) {
     console.log(`Bot Wins`);
+    document.querySelector(".botScore").textContent = botScore += 1;
     document.querySelector("body").style.backgroundColor = "Red";
-  } else if ((playerPlay - botPlay + 3) % 3 === 0) {
+  } else if ((playerChoice - botChoice + 3) % 3 === 0) {
     console.log(`It is a tie!`);
     document.querySelector("body").style.backgroundColor = "Yellow";
   }
 }
 
-for (let i = 0; i < playerPlay.length; i++) {
-  playerPlay[i].addEventListener("click", function () {
-    gameRound(Number(playerPlay[i].value));
+for (let i = 0; i < playerChoice.length; i++) {
+  playerChoice[i].addEventListener("click", function () {
+    if (playerScore <= 2 || botScore <= 2) {
+      gameRound(Number(playerChoice[i].value));
+    }
   });
 }
