@@ -7,14 +7,18 @@
 const rockBtn = document.querySelector(".rock");
 const paperBtn = document.querySelector(".paper");
 const scissorsBtn = document.querySelector(".scissors");
+const playerPlay = document.querySelectorAll(".choice");
 
 rockBtn.value = 1;
 paperBtn.value = 2;
 scissorsBtn.value = 3;
 
-function gameRound() {
+function gameRound(playerPlay) {
   botPlay = Math.trunc(Math.random() * 3);
-  console.log(botPlay);
 }
 
-gameRound();
+for (let i = 0; i < playerPlay.length; i++) {
+  playerPlay[i].addEventListener("click", function () {
+    gameRound(Number(playerPlay[i].value));
+  });
+}
