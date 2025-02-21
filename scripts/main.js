@@ -10,32 +10,45 @@ const scissorsBtn = document.querySelector(".scissors");
 const playerChoice = document.querySelectorAll(".choice");
 let playerScore = Number(document.querySelector(".playerScore").textContent);
 let botScore = Number(document.querySelector(".botScore").textContent);
+let gameOver = false;
 
 rockBtn.value = 0;
 paperBtn.value = 1;
 scissorsBtn.value = 2;
 
 function gameRound(playerChoice) {
-  let botChoice = Math.trunc(Math.random() * 3);
-  console.log(`Player chose: ${playerChoice}, Bot Chose: ${botChoice}`);
-  if ((playerChoice - botChoice + 3) % 3 === 1) {
-    console.log(`Player Wins`);
-    document.querySelector(".playerScore").textContent = playerScore += 1;
-    document.querySelector("body").style.backgroundColor = "Green";
-  } else if ((playerChoice - botChoice + 3) % 3 === 2) {
-    console.log(`Bot Wins`);
-    document.querySelector(".botScore").textContent = botScore += 1;
-    document.querySelector("body").style.backgroundColor = "Red";
-  } else if ((playerChoice - botChoice + 3) % 3 === 0) {
-    console.log(`It is a tie!`);
-    document.querySelector("body").style.backgroundColor = "Yellow";
+  if (gameOver === false) {
+    let botChoice = Math.trunc(Math.random() * 3);
+    console.log(`Player chose: ${playerChoice}, Bot Chose: ${botChoice}`);
+    if ((playerChoice - botChoice + 3) % 3 === 1) {
+      console.log(`Player Wins`);
+      document.querySelector(".playerScore").textContent = playerScore += 1;
+      document.querySelector("body").style.backgroundColor = "Green";
+      if (playerScore === 3) {
+        gameOver = true;
+      }
+    } else if ((playerChoice - botChoice + 3) % 3 === 2) {
+      console.log(`Bot Wins`);
+      document.querySelector(".botScore").textContent = botScore += 1;
+      document.querySelector("body").style.backgroundColor = "Red";
+      if (botScore === 3) {
+        gameOver = true;
+      }
+    } else if ((playerChoice - botChoice + 3) % 3 === 0) {
+      console.log(`It is a tie!`);
+      document.querySelector("body").style.backgroundColor = "Yellow";
+    } else if (gameOver === true) {
+      console.log("game is over");
+    }
   }
 }
 
 for (let i = 0; i < playerChoice.length; i++) {
   playerChoice[i].addEventListener("click", function () {
-    if (playerScore <= 2 || botScore <= 2) {
+    if (gameOver === false) {
       gameRound(Number(playerChoice[i].value));
+    } else if (gameOver === true) {
+      console.log("Game is over...");
     }
   });
 }
