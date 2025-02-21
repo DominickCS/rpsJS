@@ -9,12 +9,20 @@ const paperBtn = document.querySelector(".paper");
 const scissorsBtn = document.querySelector(".scissors");
 const playerPlay = document.querySelectorAll(".choice");
 
-rockBtn.value = 1;
-paperBtn.value = 2;
-scissorsBtn.value = 3;
+rockBtn.value = 0;
+paperBtn.value = 1;
+scissorsBtn.value = 2;
 
 function gameRound(playerPlay) {
-  botPlay = Math.trunc(Math.random() * 3);
+  let botPlay = Math.trunc(Math.random() * 3);
+  console.log(`Player chose: ${playerPlay}, Bot Chose: ${botPlay}`);
+  if ((playerPlay - botPlay + 3) % 3 === 1) {
+    console.log(`Player Wins`);
+  } else if ((playerPlay - botPlay + 3) % 3 === 2) {
+    console.log(`Bot Wins`);
+  } else if ((playerPlay - botPlay + 3) % 3 === 0) {
+    console.log(`It is a tie!`);
+  }
 }
 
 for (let i = 0; i < playerPlay.length; i++) {
