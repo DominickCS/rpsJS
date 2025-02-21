@@ -18,10 +18,13 @@ function gameRound(playerPlay) {
   console.log(`Player chose: ${playerPlay}, Bot Chose: ${botPlay}`);
   if ((playerPlay - botPlay + 3) % 3 === 1) {
     console.log(`Player Wins`);
+    document.querySelector("body").style.backgroundColor = "Green";
   } else if ((playerPlay - botPlay + 3) % 3 === 2) {
     console.log(`Bot Wins`);
+    document.querySelector("body").style.backgroundColor = "Red";
   } else if ((playerPlay - botPlay + 3) % 3 === 0) {
     console.log(`It is a tie!`);
+    document.querySelector("body").style.backgroundColor = "Yellow";
   }
 }
 
