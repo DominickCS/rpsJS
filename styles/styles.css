@@ -12,17 +12,19 @@ body {
 }
 
 .infoBox {
-  margin: 0;
+  left: 40%;
+  right: 40%;
+  position: absolute;
+  display: block;
   text-align: center;
 }
 
 .statusUpdate {
   font-size: 36px;
-  margin: 0;
 }
 
 .action {
-  min-height: 50vh;
+  min-height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
