@@ -1,16 +1,27 @@
+* {
+  border: solid purple 2px;
+}
+
+.infoBox {
+  text-align: center;
+}
+
+.statusUpdate {
+  margin: 0;
+}
+
 .action {
-  min-height: 66vh;
+  min-height: 68vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .rockGif,
 .paperGif,
 .scissorsGif {
   display: none;
-}
-div {
-  margin: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin: auto;
+  height: 24rem;
 }
 
 .btnContainer {

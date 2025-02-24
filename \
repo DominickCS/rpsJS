@@ -22,34 +22,23 @@ function gameRound(playerChoice) {
     console.log(`Player chose: ${playerChoice}, Bot Chose: ${botChoice}`);
     if ((playerChoice - botChoice + 3) % 3 === 1) {
       console.log(`Player Wins`);
-      document.querySelector(".statusUpdate").textContent =
-        "PLAYER WINS THE ROUND!";
-      document.querySelector(".playerScoreBox").style.backgroundColor = "Green";
-      document.querySelector(".botScoreBox").style.backgroundColor = "White";
       document.querySelector(".playerScore").textContent = playerScore += 1;
+      document.querySelector("body").style.backgroundColor = "Green";
       if (playerScore === 3) {
         gameOver = true;
-        document.querySelector(".statusUpdate").textContent =
-          "GAME OVER PLAYER WINS THE GAME!";
       }
     } else if ((playerChoice - botChoice + 3) % 3 === 2) {
       console.log(`Bot Wins`);
       document.querySelector(".botScore").textContent = botScore += 1;
-      document.querySelector(".statusUpdate").textContent =
-        "BOT WINS THE ROUND!";
-      document.querySelector(".botScoreBox").style.backgroundColor = "Green";
-      document.querySelector(".playerScoreBox").style.backgroundColor = "White";
+      document.querySelector("body").style.backgroundColor = "Red";
       if (botScore === 3) {
         gameOver = true;
-        document.querySelector(".statusUpdate").textContent =
-          "GAME OVER BOT WINS THE GAME!";
       }
     } else if ((playerChoice - botChoice + 3) % 3 === 0) {
       console.log(`It is a tie!`);
-      document.querySelector(".statusUpdate").textContent = "IT'S A TIE!";
-      document.querySelector(".botScoreBox").style.backgroundColor = "Yellow";
-      document.querySelector(".playerScoreBox").style.backgroundColor =
-        "Yellow";
+      document.querySelector("body").style.backgroundColor = "Yellow";
+    } else if (gameOver === true) {
+      console.log("game is over");
     }
   }
 }
@@ -58,19 +47,21 @@ for (let i = 0; i < playerChoice.length; i++) {
   playerChoice[i].addEventListener("click", function () {
     if (gameOver === false) {
       if (playerChoice[i].classList[0] === "rock") {
-        document.querySelector(".rockGif").style.display = "flex";
+        document.querySelector(".rockGif").style.display = "block";
         document.querySelector(".paperGif").style.display = "none";
         document.querySelector(".scissorsGif").style.display = "none";
       } else if (playerChoice[i].classList[0] === "paper") {
         document.querySelector(".rockGif").style.display = "none";
-        document.querySelector(".paperGif").style.display = "flex";
+        document.querySelector(".paperGif").style.display = "block";
         document.querySelector(".scissorsGif").style.display = "none";
       } else if (playerChoice[i].classList[0] === "scissors") {
         document.querySelector(".rockGif").style.display = "none";
         document.querySelector(".paperGif").style.display = "none";
-        document.querySelector(".scissorsGif").style.display = "flex";
+        document.querySelector(".scissorsGif").style.display = "block";
       }
       gameRound(Number(playerChoice[i].value));
+    } else if (gameOver === true) {
+      console.log("Game is over...");
     }
   });
 }
