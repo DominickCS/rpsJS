@@ -8,6 +8,7 @@ body {
   background: url(../img/BG.svg);
   font-family: Sigmar;
   padding: 12px;
+  font-size: 1.5rem;
 }
 
 .infoBox {
@@ -21,7 +22,7 @@ body {
 }
 
 .action {
-  min-height: 60vh;
+  min-height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
