@@ -1,17 +1,27 @@
-* {
-  border: solid purple 2px;
+.sigmar-regular {
+  font-family: "Sigmar", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  background: url(../img/BG.svg);
+  font-family: Sigmar;
+  padding: 12px;
 }
 
 .infoBox {
+  margin: 0;
   text-align: center;
 }
 
 .statusUpdate {
+  font-size: 36px;
   margin: 0;
 }
 
 .action {
-  min-height: 68vh;
+  min-height: 60vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,7 +31,8 @@
 .scissorsGif {
   display: none;
   margin: auto;
-  height: 24rem;
+  height: auto;
+  width: auto;
 }
 
 .btnContainer {

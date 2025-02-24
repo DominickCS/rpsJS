@@ -30,7 +30,7 @@ function gameRound(playerChoice) {
       if (playerScore === 3) {
         gameOver = true;
         document.querySelector(".statusUpdate").textContent =
-          "GAME OVER PLAYER WINS THE GAME!";
+          "GAME OVER: PLAYER WINS THE GAME!";
       }
     } else if ((playerChoice - botChoice + 3) % 3 === 2) {
       console.log(`Bot Wins`);
@@ -42,7 +42,7 @@ function gameRound(playerChoice) {
       if (botScore === 3) {
         gameOver = true;
         document.querySelector(".statusUpdate").textContent =
-          "GAME OVER BOT WINS THE GAME!";
+          "GAME OVER: BOT WINS THE GAME!";
       }
     } else if ((playerChoice - botChoice + 3) % 3 === 0) {
       console.log(`It is a tie!`);
